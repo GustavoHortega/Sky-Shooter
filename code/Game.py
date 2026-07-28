@@ -1,6 +1,6 @@
 import pygame
 
-from Menu import Menu
+from code.Menu import Menu
 
 
 class Game:
