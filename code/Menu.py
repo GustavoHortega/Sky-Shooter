@@ -3,7 +3,7 @@ from pygame.font import Font
 from pygame.surface import Surface
 from pygame.rect import Rect
 
-from code.const import WIN_WIDTH, COLOR_RED, MENU_OPTIONS, COLOR_WHITE
+from code.const import WIN_WIDTH, COLOR_RED, MENU_OPTION, COLOR_WHITE
 
 
 class Menu:
@@ -22,11 +22,11 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)  # Desenha a imagem do Bg no retangulo.
             self.menu_text(70, "Sky", COLOR_RED, ((WIN_WIDTH / 2), 70))
             self.menu_text(70, "Shooter", COLOR_RED, ((WIN_WIDTH / 2), 110))
-            for i in range(len(MENU_OPTIONS)):
+            for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(25, MENU_OPTIONS[i], COLOR_RED, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(25, MENU_OPTION[i], COLOR_RED, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
-                    self.menu_text(25, MENU_OPTIONS[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(25, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
             pygame.display.flip()
 
 
@@ -41,7 +41,7 @@ class Menu:
                 #Evento Pressionar Teclas
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:
-                        if menu_option < len(MENU_OPTIONS) - 1:
+                        if menu_option < len(MENU_OPTION) - 1:
                             menu_option +=1
                         else:
                             menu_option = 0
@@ -49,9 +49,9 @@ class Menu:
                         if menu_option > 0:
                             menu_option -= 1
                         else:
-                            menu_option = len(MENU_OPTIONS)-1
+                            menu_option = len(MENU_OPTION)-1
                     if event.key == pygame.K_RETURN:
-                        return MENU_OPTIONS[menu_option]
+                        return MENU_OPTION[menu_option]
 
 
 
