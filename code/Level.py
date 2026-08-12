@@ -1,3 +1,4 @@
+import random
 import sys
 
 import pygame
@@ -6,7 +7,7 @@ from pygame.font import Font
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
-from code.const import COLOR_WHITE, WIN_HEIGHT, COLOR_RED, MENU_OPTION
+from code.const import COLOR_WHITE, WIN_HEIGHT, COLOR_RED, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 
 
 class Level:
@@ -20,6 +21,7 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity('Player1'))
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
 
     def run(self, ):
         pygame.mixer_music.load(f'./asset/{self.name}.wav')
@@ -34,7 +36,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(("Enemy1", "Enemy2"))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
             # Imprime textos do level
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_RED, (10, 5))
             self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_RED, (10, WIN_HEIGHT - 35))
