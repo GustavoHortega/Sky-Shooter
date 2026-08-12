@@ -6,18 +6,20 @@ from pygame.font import Font
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
-from code.const import COLOR_WHITE, WIN_HEIGHT, COLOR_RED
+from code.const import COLOR_WHITE, WIN_HEIGHT, COLOR_RED, MENU_OPTION
 
 
 class Level:
     def __init__(self, window, name, game_mode):
-        self.timeout = None
+        self.timeout = 20000
         self.window = window
         self.name = name
         self.game_mode = game_mode  # Modo de jogo
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
-        self.timeout = 20000  # 20 segundos
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
 
     def run(self, ):
         pygame.mixer_music.load(f'./asset/{self.name}.wav')
