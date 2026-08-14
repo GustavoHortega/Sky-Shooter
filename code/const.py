@@ -11,9 +11,13 @@ ENTITY_SPEED = {
     'Level1Bg2': 1,
     'Level1Bg3': 3,
     'Player1': 3,
+    'Player1Shot': 8,
     'Player2': 3,
+    'Player2Shot': 8,
     'Enemy1': 2,
-    'Enemy2': 1
+    'Enemy1Shot': 4,
+    'Enemy2': 1,
+    'Enemy2Shot': 4,
 }
 
 ENTITY_HEALTH = {
@@ -22,9 +26,20 @@ ENTITY_HEALTH = {
     'Level1Bg2': 999,
     'Level1Bg3': 999,
     'Player1': 300,
+    'Player1Shot': 1,
     'Player2': 300,
+    'Player2Shot': 1,
     'Enemy1': 50,
-    'Enemy2': 60
+    'Enemy1Shot': 1,
+    'Enemy2': 60,
+    'Enemy2Shot': 1,
+}
+
+ENTITY_SHOOT_DELAY = {
+    'Player1': 20,
+    'Player2': 20,
+    'Enemy1': 80,
+    'Enemy2': 80,
 }
 
 EVENT_ENEMY = pygame.USEREVENT + 1
