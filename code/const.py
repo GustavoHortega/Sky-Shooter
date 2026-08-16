@@ -42,6 +42,21 @@ ENTITY_SHOOT_DELAY = {
     'Enemy2': 80,
 }
 
+ENTITY_DAMAGE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 2,
+    'Level1Bg2': 1,
+    'Level1Bg3': 3,
+    'Player1': 1,
+    'Player1Shot': 25,
+    'Player2': 1,
+    'Player2Shot': 25,
+    'Enemy1': 1,
+    'Enemy1Shot': 20,
+    'Enemy2': 1,
+    'Enemy2Shot': 20,
+}
+
 EVENT_ENEMY = pygame.USEREVENT + 1
 
 # M

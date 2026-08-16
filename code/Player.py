@@ -1,5 +1,3 @@
-from re import match
-
 import pygame
 
 from code.Entity import Entity
