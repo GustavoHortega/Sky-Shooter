@@ -1,9 +1,10 @@
 import pygame
 
 # C
-COLOR_RED = (215, 38, 56)
-COLOR_WHITE = (255, 255, 255)
-
+C_RED = (215, 38, 56)
+C_WHITE = (255, 255, 255)
+C_GREEN = (70, 160, 0)
+C_ORANGE = (206, 101, 0)
 # E
 ENTITY_SPEED = {
     'Level1Bg0': 0,

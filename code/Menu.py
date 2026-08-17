@@ -3,7 +3,7 @@ from pygame.font import Font
 from pygame.surface import Surface
 from pygame.rect import Rect
 
-from code.const import WIN_WIDTH, COLOR_RED, MENU_OPTION, COLOR_WHITE
+from code.const import WIN_WIDTH, C_RED, MENU_OPTION, C_WHITE
 
 
 class Menu:
@@ -20,13 +20,13 @@ class Menu:
         while True:
             # DESENHA IMAGENS
             self.window.blit(source=self.surf, dest=self.rect)  # Desenha a imagem do Bg no retangulo.
-            self.menu_text(70, "Sky", COLOR_RED, ((WIN_WIDTH / 2), 70))
-            self.menu_text(70, "Shooter", COLOR_RED, ((WIN_WIDTH / 2), 110))
+            self.menu_text(70, "Sky", C_RED, ((WIN_WIDTH / 2), 70))
+            self.menu_text(70, "Shooter", C_RED, ((WIN_WIDTH / 2), 110))
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(25, MENU_OPTION[i], COLOR_RED, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(25, MENU_OPTION[i], C_RED, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
-                    self.menu_text(25, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(25, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
             pygame.display.flip()
 
 
