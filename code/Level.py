@@ -10,7 +10,7 @@ from code.EntityMediator import EntityMediator
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.Player import Player
-from code.const import C_WHITE, WIN_HEIGHT, C_RED, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_ORANGE
+from code.const import WIN_HEIGHT, C_RED, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_ORANGE
 
 
 class Level:
@@ -40,9 +40,9 @@ class Level:
                     if shot is not None:
                         self.entity_list.append(shot)
                 if ent.name == 'Player1':
-                    self.level_text(14, f'Player 1 - HP: {ent.health}', C_GREEN, (10, 25))
+                    self.level_text(14, f'Player 1 - HP: {ent.health} | Score: {ent.score}', C_GREEN, (10, 25))
                 if ent.name == 'Player2':
-                    self.level_text(14, f'Player 2 - HP: {ent.health}', C_ORANGE, (10, 40))
+                    self.level_text(14, f'Player 2 - HP: {ent.health} | Score: {ent.score}', C_ORANGE, (10, 40))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()

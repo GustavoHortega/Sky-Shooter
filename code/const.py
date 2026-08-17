@@ -58,6 +58,21 @@ ENTITY_DAMAGE = {
     'Enemy2Shot': 20,
 }
 
+ENTITY_SCORE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Level1Bg3': 0,
+    'Player1': 0,
+    'Player1Shot': 0,
+    'Player2': 0,
+    'Player2Shot': 0,
+    'Enemy1': 100,
+    'Enemy1Shot': 0,
+    'Enemy2': 100,
+    'Enemy2Shot': 0,
+}
+
 EVENT_ENEMY = pygame.USEREVENT + 1
 
 # M

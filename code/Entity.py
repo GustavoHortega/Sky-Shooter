@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import pygame
 
-from code.const import ENTITY_HEALTH, ENTITY_DAMAGE
+from code.const import ENTITY_HEALTH, ENTITY_DAMAGE, ENTITY_SCORE
 
 
 class Entity(ABC):
@@ -13,6 +13,7 @@ class Entity(ABC):
         self.health = ENTITY_HEALTH[name]
         self.damage = ENTITY_DAMAGE[name]
         self.last_dmg = 'None'
+        self.score = ENTITY_SCORE[name]
 
     @abstractmethod
     def move(self, ):
