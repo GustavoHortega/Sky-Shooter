@@ -10,21 +10,23 @@ from code.EntityMediator import EntityMediator
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.Player import Player
-from code.const import WIN_HEIGHT, C_RED, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_ORANGE
+from code.Const import WIN_HEIGHT, C_RED, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_ORANGE, EVENT_TIMEOUT, \
+    TIMEOUT_STEP, TIMEOUT_LEVEL
 
 
 class Level:
     def __init__(self, window, name, game_mode):
-        self.timeout = 20000
+        self.timeout = TIMEOUT_LEVEL
         self.window = window
         self.name = name
         self.game_mode = game_mode  # Modo de jogo
         self.entity_list: list[Entity] = []
-        self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
+        self.entity_list.extend(EntityFactory.get_entity(name + 'Bg'))
         self.entity_list.append(EntityFactory.get_entity('Player1'))
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
+        pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP) #Checa condição de vitória a cada 100ms
 
     def run(self, ):
         pygame.mixer_music.load(f'./asset/{self.name}.wav')
@@ -43,13 +45,17 @@ class Level:
                     self.level_text(14, f'Player 1 - HP: {ent.health} | Score: {ent.score}', C_GREEN, (10, 25))
                 if ent.name == 'Player2':
                     self.level_text(14, f'Player 2 - HP: {ent.health} | Score: {ent.score}', C_ORANGE, (10, 40))
-            for event in pygame.event.get():
+            for event in pygame.event.get(): # Checa eventos
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(("Enemy1", "Enemy2"))
                     self.entity_list.append(EntityFactory.get_entity(choice))
+                if event.type == EVENT_TIMEOUT:
+                    self.timeout -= TIMEOUT_STEP
+                    if self.timeout == 0:
+                        return True # level_return
 
             # Imprime textos do level
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_RED, (10, 5))

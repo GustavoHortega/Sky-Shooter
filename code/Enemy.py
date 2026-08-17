@@ -2,7 +2,7 @@ import pygame
 
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
-from code.const import ENTITY_SPEED, ENTITY_SHOOT_DELAY
+from code.Const import ENTITY_SPEED, ENTITY_SHOOT_DELAY
 
 
 class Enemy(Entity):
