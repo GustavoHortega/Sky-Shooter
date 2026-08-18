@@ -8,5 +8,5 @@ class PlayerShot(Entity):
         self.name = name
 
 
-    def move(self,):
+    def move(self):
         self.rect.x += ENTITY_SPEED[self.name]

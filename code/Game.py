@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 
 from code.Menu import Menu
@@ -34,4 +36,5 @@ class Game:
                 pygame.quit()  # Fecha janela
                 exit()  # Encerra pygame
             else:
-                pass
+                pygame.quit()
+                sys.exit()
